@@ -1,46 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Console Tricks!</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Console Tricks!</title>
+  </head>
+  <body>
+    <p onClick="makeGreen()">×BREAK×DOWN×</p>
 
-  <p onClick="makeGreen()">×BREAK×DOWN×</p>
+    <script>
+      const dogs = [{ name: "Snickers", age: 2 }, { name: "hugo", age: 8 }];
 
-  <script>
-    const dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }];
+      function makeGreen() {
+        const p = document.querySelector("p");
+        p.style.color = "#BADA55";
+        p.style.fontSize = "50px";
+      }
 
-    function makeGreen() {
-      const p = document.querySelector('p');
-      p.style.color = '#BADA55';
-      p.style.fontSize = '50px';
-    }
+      // Regular
+      console.log("hello");
 
-    // Regular
+      // Interpolated
+      console.log("hello i am a %s string", "mother idiot");
 
-    // Interpolated
+      // Styled
+      console.log("%c I am a cool dude", "font-size: 15px");
 
-    // Styled
+      // warning!
+      console.warn("OH NO");
 
-    // warning!
+      // Error :|
+      console.error("Shit!!!!!!!");
 
-    // Error :|
+      // Info
+      console.info("i am not a mormon");
 
-    // Info
+      // Testing
+      // console.assert(1 === 2, "you did not select the right thing");
 
-    // Testing
+      // clearing
+      // console.clear()
 
-    // clearing
+      // Viewing DOM Elements
+      console.log(makeGreen);
+      console.dir(makeGreen);
 
-    // Viewing DOM Elements
+      console.clear();
+      // Grouping together
+      dogs.forEach(dog => {
+        console.groupCollapsed(`${dog.name}`);
+        console.log(`this is ${dog.name}`);
+        console.log(`${dog.name} is ${dog.age} years old`);
+        console.log(`${dog.name} is ${dog.age * 7} dog years`);
+        console.groupEnd(`${dog.name}`);
+      });
 
-    // Grouping together
+      // counting
+      console.count("Cameron");
+      console.count("Cameron");
+      console.count("gabe");
+      console.count("Cameron");
+      console.count("gabe");
+      console.count("Cameron");
+      console.count("gabe");
+      console.count("Cameron");
+      console.count("Cameron");
 
-    // counting
-
-    // timing
-
-  </script>
-</body>
+      // timing
+      console.time('fetching data')
+      fetch('https://api.github.com/users/craveburn')
+      .then(data => data.json())
+      .then(data => {
+        console.timeEnd('fetching data')
+        console.table(data)
+      })
+    </script>
+  </body>
 </html>
